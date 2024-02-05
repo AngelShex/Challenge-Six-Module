@@ -43,6 +43,9 @@ border: 1px solid #ccc;
     border-radius: 4px;
     background: #5372F0;
 }
+.weather-input .location-btn {
+    background: #6C757D;
+}
 .weather-data {
     width: 100%;
 }
