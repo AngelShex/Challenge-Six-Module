@@ -64,3 +64,26 @@ border: 1px solid #ccc;
 .weather-data {
     width: 100%;
 }
+.current-weather {
+    color: #fff;
+    border-radius: 5px;
+    padding: 20px 70px 20px 20px;
+    background: #5372F0;
+    justify-content: space-between;
+}
+.current-weather h2 {
+    font-size: 1.7rem;
+}
+.weather-data h4 {
+    margin-top: 12px;
+    font-size: 1rem;
+    font-weight: 500;
+}
+.current-weather .icon img {
+    max-width: 120px;
+    margin-top: -15px;
+}
+.current-weather .icon h4 {
+    margin-top: -10px;
+    text-transform: capitalize;
+}
