@@ -3,6 +3,16 @@ const searchButton = document.querySelector(".search-btn");
 
 const API_KEY = "67c516a9d98b31f230ca4b47e49f1ea4";
 
+const createWeatherCard = (weatherItem) => {
+    return ` <li class="card">
+    <h3>(2024-02-04)</h3>
+        <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="weather-icon">
+    <h4>Temp: 12°C </h4>
+    <h4>Wind: 8kph</h4>
+    <h4>Humidity: 81%</h4>
+</li>`;
+}
+
 const getWeatherDetails = (cityName, lat, lon) => {
     const WEATH_API_URL = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&cnt={cnt}&appid=${API_KEY}`;
 
@@ -17,6 +27,9 @@ if(!uniqueForecastDays.includes(forecastDate)) {
     });
 
     console.log(fiveDaysForecast);
+    fiveDaysForecast.forEach(weatherItem => {
+createWeatherCard(weatherItem);
+    }); 
 }).catch(() => {
     alert("An error occurred while featching the weather forecast!");
     });
