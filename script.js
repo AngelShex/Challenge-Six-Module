@@ -27,6 +27,10 @@ if(!uniqueForecastDays.includes(forecastDate)) {
 }
     });
 
+cityInput.value = "";
+weatherCardsDiv.innerHTML = "";
+
+
     console.log(fiveDaysForecast);
     fiveDaysForecast.forEach(weatherItem => {
         weatherCardsDiv.insertAdjacentHTML("beforeend", createWeatherCard(weatherItem)) 
