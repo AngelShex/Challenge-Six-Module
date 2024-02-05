@@ -1,15 +1,16 @@
 const cityInput = document.querySelector(".city-input");
 const searchButton = document.querySelector(".search-btn");
+const weatherCardsDiv = document.querySelector(".weather-cards");
 
 const API_KEY = "67c516a9d98b31f230ca4b47e49f1ea4";
 
 const createWeatherCard = (weatherItem) => {
     return ` <li class="card">
-    <h3>(2024-02-04)</h3>
-        <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="weather-icon">
-    <h4>Temp: 12°C </h4>
-    <h4>Wind: 8kph</h4>
-    <h4>Humidity: 81%</h4>
+    <h3>(${weatherItem.dt_txt.split(" ")[0]})</h3>
+        <img src="https://openweathermap.org/img/wn/${weatherItem.weather[0].icon}@2x.png" alt="weather-icon">
+    <h4>Temp: ${(weatherItem.main.temp - 273.15).toFixed(2)}°C </h4>
+    <h4>Wind: ${weatherItem.wind.speed} M/S</h4>
+    <h4>Humidity: ${weatherItem.humidity}%</h4>
 </li>`;
 }
 
