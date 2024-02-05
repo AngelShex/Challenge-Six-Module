@@ -4,7 +4,22 @@ const searchButton = document.querySelector(".search-btn");
 const API_KEY = "67c516a9d98b31f230ca4b47e49f1ea4";
 
 const getWeatherDetails = (cityName, lat, lon) => {
-    const WEATH_API_URL = `api.openweathermap.org/data/2.5/forecast/daily?lat={lat}&lon={lon}&cnt={cnt}&appid={API key}`;
+    const WEATH_API_URL = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&cnt={cnt}&appid=${API_KEY}`;
+
+fetch(WEATH_API_URL).then(res => res.json()).then(data => {
+
+    const uniqueForecastDays = [];
+  const fiveDaysForecast = data.list.filter(forecast => {
+const forecastDate = new Date(forecast.dt_txt).getDate();
+if(!uniqueForecastDays.includes(forecastDate)) {
+    return uniqueForecastDays.push(forecasteDate);
+}
+    });
+
+    console.log(fiveDaysForecast);
+}).catch(() => {
+    alert("An error occurred while featching the weather forecast!");
+    });
 }
 
 const getCityCoordinates = () => {
