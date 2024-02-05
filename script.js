@@ -4,6 +4,7 @@ const locationButton = document.querySelector(".location-btn");
 const CurrentWeatherDiv = document.querySelector(".current-weather");
 const weatherCardsDiv = document.querySelector(".weather-cards");
 
+// This is my API key for OpenWeatherMap API
 const API_KEY = "67c516a9d98b31f230ca4b47e49f1ea4";
 
 const createWeatherCard = (cityName, weatherItem, index) => {
@@ -11,8 +12,8 @@ const createWeatherCard = (cityName, weatherItem, index) => {
 return `   <div class="details">
 <h2>${cityName} (${weatherItem.dt_txt.split(" ")[0]})</h2>
 <h4>Temp: ${(weatherItem.main.temp - 273.15).toFixed(2)}°C </h4>
-        <h4>Wind: ${weatherItem.wind.speed} M/S</h4>
-        <h4>Humidity: ${weatherItem.humidity}%</h4> 
+ <h4>Wind: ${weatherItem.wind.speed} M/S</h4>
+<h4>Humidity: ${weatherItem.humidity}%</h4> 
 </div>
 <div class="icon">
 <img src=""https://openweathermap.org/img/wn/${weatherItem.weather[0].icon}@2x.png" alt="weather-icon">
@@ -30,15 +31,15 @@ return `   <div class="details">
     }
 
 const getWeatherDetails = (cityName, lat, lon) => {
-    const GEOCODING_API_URL = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&cnt={cnt}&appid=${API_KEY}`;
+    const WEATHER_API_URL = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}`;
 
-fetch(GEOCODING_API_URL).then(res => res.json()).then(data => {
+fetch(WEATHER_API_URL).then(res => res.json()).then(data => {
 
     const uniqueForecastDays = [];
   const fiveDaysForecast = data.list.filter(forecast => {
 const forecastDate = new Date(forecast.dt_txt).getDate();
 if(!uniqueForecastDays.includes(forecastDate)) {
-    return uniqueForecastDays.push(forecasteDate);
+    return uniqueForecastDays.push(forecastDate);
 }
     });
 
@@ -49,7 +50,7 @@ weatherCardsDiv.innerHTML = "";
 
     console.log(fiveDaysForecast);
     fiveDaysForecast.forEach((weatherItem, index) => {
-        if(index ===0) {
+        if(index === 0) {
             weatherCardsDiv.insertAdjacentHTML("beforeend", createWeatherCard(cityName, weatherItem, index));
         } else {
             weatherCardsDiv.insertAdjacentHTML("beforeend", createWeatherCard(cityName, weatherItem, index));
@@ -96,7 +97,7 @@ const getUserCoordinates = () => {
     );
 }
 
-
+// this is for the button input fields 
 locationButton.addEventListener("click", getUserCoordinates);
 searchButton.addEventListener("click", getCityCoordinates);
 cityInput.addEventListener("keyup", e => e.key === "Enter" && getCityCoordinates());
