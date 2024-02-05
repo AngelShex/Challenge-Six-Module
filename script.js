@@ -29,7 +29,8 @@ if(!uniqueForecastDays.includes(forecastDate)) {
 
     console.log(fiveDaysForecast);
     fiveDaysForecast.forEach(weatherItem => {
-createWeatherCard(weatherItem);
+        weatherCardsDiv.insertAdjacentHTML("beforeend", createWeatherCard(weatherItem)) 
+;
     }); 
 }).catch(() => {
     alert("An error occurred while featching the weather forecast!");
