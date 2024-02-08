@@ -51,6 +51,7 @@ weatherCardsDiv.innerHTML = "";
 
     console.log(fiveDaysForecast);
     fiveDaysForecast.forEach((weatherItem, index) => {
+        const html = createWeatherCard(cityName, weatherItem, index);
         if(index === 0) {
             CurrentWeatherDiv.insertAdjacentHTML("beforeend", createWeatherCard(cityName, weatherItem, index));
         } else {
