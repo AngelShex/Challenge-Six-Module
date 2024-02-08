@@ -52,7 +52,7 @@ weatherCardsDiv.innerHTML = "";
     console.log(fiveDaysForecast);
     fiveDaysForecast.forEach((weatherItem, index) => {
         if(index === 0) {
-            weatherCardsDiv.insertAdjacentHTML("beforeend", createWeatherCard(cityName, weatherItem, index));
+            currentweatherCardsDiv.insertAdjacentHTML("beforeend", createWeatherCard(cityName, weatherItem, index));
         } else {
             weatherCardsDiv.insertAdjacentHTML("beforeend", createWeatherCard(cityName, weatherItem, index));
         }
